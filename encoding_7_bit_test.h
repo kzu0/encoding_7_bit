@@ -1,7 +1,8 @@
 #ifndef ENCODING_7_BIT_TEST_H
 #define ENCODING_7_BIT_TEST_H
 
-#include <encoding_7_bit.h>
+#include "encoding_7_bit.h"
+
 #include <random>
 
 #define DATA_LENGTH 512
