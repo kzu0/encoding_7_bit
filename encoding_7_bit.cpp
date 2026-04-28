@@ -5,7 +5,7 @@
  *      Author: kzu0
  */
 
-#include <encoding_7_bit.h>
+#include "encoding_7_bit.h"
 
 uint32_t enc7bit_encodeStream( enc7bit_ctx_t *ctx, const uint8_t *in, uint8_t *out, uint32_t size, bool flush ) {
 
