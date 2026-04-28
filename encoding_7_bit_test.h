@@ -2,25 +2,33 @@
 #define ENCODING_7_BIT_TEST_H
 
 #include "encoding_7_bit.h"
-
 #include <random>
+#include <cstdio>
 
 #define DATA_LENGTH 512
 
 static bool enc7bit_sizesTest() {
 
+    printf ("Test encoding / decoding size test ... \n");
+
     for (uint32_t i = 0; i <= DATA_LENGTH; i ++ )
     {
         if (enc7bit_decodeLength(enc7bit_encodeLength(i)) != i)
         {
+            printf ("Test failed \n\n");
+            fflush(stdout);
             return false;
         }
     }
 
+    printf ("Test success \n\n");
+    fflush(stdout);
     return true;
 }
 
 static bool enc7bit_streamTest() {
+
+    printf ("Test encoding / decoding stream test ... \n");
 
     enc7bit_ctx_t ctx;
 
@@ -63,13 +71,19 @@ static bool enc7bit_streamTest() {
 
     if (memcmp(data, decoded, DATA_LENGTH))
     {
+        printf ("Test failed \n\n");
+        fflush(stdout);
         return false;
     }
 
+    printf ("Test success \n\n");
+    fflush(stdout);
     return true;
 }
 
 static bool enc7bit_blockTest() {
+
+    printf ("Test encoding / decoding block test ... \n");
 
     uint8_t data[DATA_LENGTH];
     uint8_t encoded[DATA_LENGTH*2];
@@ -91,11 +105,15 @@ static bool enc7bit_blockTest() {
 
     if (memcmp(data, decoded, DATA_LENGTH))
     {
+        printf ("Test failed \n\n");
+        fflush(stdout);
         return false;
     }
 
     (void)decoded_length;
 
+    printf ("Test success \n\n");
+    fflush(stdout);
     return true;
 }
 
